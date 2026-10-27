@@ -87,3 +87,12 @@ UPDATE products SET price = price * 110 / 100 WHERE category_id = 3;
 DELETE FROM products WHERE id = 22;
 -- Задание 23. Создай таблицу employees и добавь в неё шесть сотрудников (см. README.md)
 
+CREATE TABLE employees (
+    id   INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    full_name TEXT NOT NULL,
+	department TEXT NOT NULL,
+	position TEXT NOT NULL
+INSERT INTO employees (full_name, department, position) VALUES ('Смирнова О.И.', 'Бухгалтерия', 'Главный бухгалтер'),
+('Петров В.С.', 'Склад', 'Кладовщик'), ('Иванова А.П.',	'Склад', 'Начальник склада'),
+('Лебедева М.К.', 'Отдел кадров', 'Начальник отдела кадров'), ('Соколов И.Н.',	'Отдел продаж',	'Менеджер по продажам'),
+('Новиков Р.Т.', 'Разработка', 'Стажёр-программист');
