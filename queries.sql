@@ -37,22 +37,22 @@ SELECT id FROM orders WHERE order_date BETWEEN '2025-01-01' AND '2025-12-31';
 
 -- Задание 10. Сколько всего товаров в каталоге
 
-
+SELECT COUNT(*) FROM products;
 -- Задание 11. Средняя цена товара, округлённая до целых
 
-
+SELECT AVG(price) FROM products;
 -- Задание 12. Город и сколько в нём клиентов. Сначала города с большим числом клиентов, при равенстве — по алфавиту
 
-
+SELECT city, COUNT(*) as count_cl FROM clients GROUP BY city ORDER BY count_cl DESC;
 -- Задание 13. Города, в которых больше одного клиента, и число клиентов в них
 
-
+SELECT city, COUNT(*) FROM clients GROUP BY city HAVING COUNT(*) > 1;
 -- Задание 14. Номер категории и сколько всего штук товаров этой категории лежит на складе
 
-
+SELECT category_id, SUM(stock) AS total_products FROM products GROUP BY category_id ORDER BY category_id;
 -- Задание 15. Номер заказа и его сумма (количество × цена по всем строкам заказа)
 
-
+SELECT order_id, SUM(quantity * price) AS total_amount FROM order_items GROUP BY order_id ORDER BY order_id;
 -- ===================== Часть C. Несколько таблиц =====================
 
 -- Задание 16. Название товара и название его категории
