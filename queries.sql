@@ -77,12 +77,13 @@ WHERE i.quantity IS NULL;
 
 -- Задание 20. Добавь товар «Ручка шариковая синяя»: категория 3, цена 50, на складе 200
 
-
+INSERT INTO products (name, category_id, price, stock)
+VALUES ('Ручка шариковая синяя', 3, 50, 200);
 -- Задание 21. Подними цены на все товары категории «Канцелярия» на 10%
 
-
+UPDATE products SET price = price * 110 / 100 WHERE category_id = 3;
 -- Задание 22. Удали товар «Ручка шариковая синяя»
 
-
+DELETE FROM products WHERE id = 22;
 -- Задание 23. Создай таблицу employees и добавь в неё шесть сотрудников (см. README.md)
 
