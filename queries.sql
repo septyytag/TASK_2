@@ -56,17 +56,23 @@ SELECT order_id, SUM(quantity * price) AS total_amount FROM order_items GROUP BY
 -- ===================== Часть C. Несколько таблиц =====================
 
 -- Задание 16. Название товара и название его категории
-
+SELECT  p.name, c.name FROM  products p JOIN categories c ON p.category_id = c.id ORDER BY c.name, p.name;
 
 -- Задание 17. Номер заказа, дата заказа и название клиента
-
+SELECT  i.order_id, o.order_date, c.name  FROM orders o LEFT JOIN order_items i ON o.id = i.order_id
+LEFT JOIN clients c ON o.client_id = c.id;
 
 -- Задание 18. Три клиента, которые купили больше всех: название клиента и сумма всех его заказов, от большей к меньшей
 
-
+SELECT c.name, SUM(i.quantity * i.price) AS total_spent FROM clients c
+JOIN orders o ON c.id = o.id JOIN order_items i ON o.client_id = i.order_id
+GROUP BY c.id, c.name ORDER BY total_spent DESC LIMIT 3;
 -- Задание 19. Названия товаров, которые ни разу не заказывали
 
-
+SELECT p.name
+FROM products p
+LEFT JOIN order_items i ON i.product_id = p.id
+WHERE i.quantity IS NULL;
 -- ===================== Часть D. Изменение данных =====================
 
 -- Задание 20. Добавь товар «Ручка шариковая синяя»: категория 3, цена 50, на складе 200
